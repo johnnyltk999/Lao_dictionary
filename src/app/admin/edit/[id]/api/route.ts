@@ -89,6 +89,12 @@ export async function PUT(request: NextRequest) {
               "UPDATE worddescribe SET wordDescribe_Detail = ?, WordType_ID = ?, Image = ? WHERE ID = ?",
               [detail, wordTypeID, buffer, wordDescribeId]
             );
+          await mysqlPool
+            .promise()
+            .query(
+              "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ເພີ່ມຮູບພາບ', ?, 1)",
+              [Word_ID, Admin_ID]
+            );
         } else {
           // Update existing worddescribe entry without image
           await mysqlPool
@@ -96,6 +102,12 @@ export async function PUT(request: NextRequest) {
             .query(
               "UPDATE worddescribe SET wordDescribe_Detail = ?, WordType_ID = ? WHERE ID = ?",
               [detail, wordTypeID, wordDescribeId]
+            );
+          await mysqlPool
+            .promise()
+            .query(
+              "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ແກ້ໄຂແລະເພີ່ມຄຳອະທິບາຍ', ?, 1)",
+              [Word_ID, Admin_ID]
             );
         }
       } else {
@@ -115,17 +127,25 @@ export async function PUT(request: NextRequest) {
               "INSERT INTO worddescribe (wordDescribe_Detail, WordType_ID, Word_ID) VALUES (?, ?, ?)",
               [detail, wordTypeID, Word_ID]
             );
+
+          // Log the update in wordupdate table
+          await mysqlPool
+            .promise()
+            .query(
+              "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ເພີ່ມຄຳອະທິບາຍ', ?, 1)",
+              [Word_ID, Admin_ID]
+            );
         }
       }
     }
 
     // Log the update in wordupdate table
-    await mysqlPool
-      .promise()
-      .query(
-        "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ແກ້ໄຂຄຳສັບ', ?, 1)",
-        [Word_ID, Admin_ID]
-      );
+    // await mysqlPool
+    //   .promise()
+    //   .query(
+    //     "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ແກ້ໄຂຄຳສັບ', ?, 1)",
+    //     [Word_ID, Admin_ID]
+    //   );
 
     return NextResponse.json(
       { message: "Word updated successfully" },

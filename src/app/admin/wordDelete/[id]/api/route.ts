@@ -11,7 +11,10 @@ export async function DELETE(req: any, { params }: any) {
 
     try {
       await connection.beginTransaction();
-
+      // Delete from wordupdate table
+      await connection.execute(`DELETE FROM wordupdate WHERE word_id = ?`, [
+        id,
+      ]);
       // Delete from Worddescribe table
       const [result1] = await connection.execute(
         `DELETE FROM Worddescribe WHERE word_id = ?`,

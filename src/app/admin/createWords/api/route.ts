@@ -139,6 +139,14 @@ export async function POST(request: NextRequest) {
         );
     }
 
+    // Log the update in wordupdate table
+    await mysqlPool
+      .promise()
+      .query(
+        "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ເພີ່ມຄຳສັບໃຫມ່', ?, 1)",
+        [wordId]
+      );
+
     return NextResponse.json(
       { message: "Word inserted successfully", wordId },
       { status: 200 }
