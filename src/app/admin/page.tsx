@@ -113,6 +113,7 @@ import { useSession, signIn, signOut } from "next-auth/react";
 
 //icon
 import { FaUserFriends, FaBook } from "react-icons/fa";
+import { MdManageHistory } from "react-icons/md";
 
 interface Word {
   id: number;
@@ -166,25 +167,39 @@ export default function Page() {
               </div>
             </div>
           </nav>
-          <div className="flex space-x-5 mx-5">
-            <Link
-              href="/admin/createWords"
-              className="p-2 rounded-lg bg-green-500 text-white hover:bg-green-700"
-            >
-              <div className="flex">
-                + <FaBook className="text-2xl" /> ເພີ່ມຄຳສັບ
-              </div>
-            </Link>
-            <Link
-              href="/admin/AdminList"
-              className="p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-700"
-            >
-              <span className="flex">
-                + <FaUserFriends className="text-2xl" />
-                ແອັດມິນ
-              </span>
-            </Link>
+          <div className="flex">
+            <div className="flex space-x-5 mx-5">
+              <Link
+                href="/admin/createWords"
+                className="p-2 rounded-lg bg-green-500 text-white hover:bg-green-700"
+              >
+                <div className="flex">
+                  + <FaBook className="text-2xl" /> ເພີ່ມຄຳສັບ
+                </div>
+              </Link>
+              <Link
+                href="/admin/AdminList"
+                className="p-2 rounded-lg bg-blue-500 text-white hover:bg-blue-700"
+              >
+                <span className="flex">
+                  + <FaUserFriends className="text-2xl" />
+                  ແອັດມິນ
+                </span>
+              </Link>
+            </div>
+            <div className="flex justify-end">
+              <Link
+                href="/admin/historyEvent"
+                className="p-2 rounded-lg bg-pink-500 text-white hover:bg-pink-700"
+              >
+                <span className="flex">
+                  <MdManageHistory className="text-2xl" />
+                  ປະຫວັດການແກ້ໄຂ
+                </span>
+              </Link>
+            </div>
           </div>
+
           <Search search={search} setSearch={setSearch} />
           {/* Pass filteredData to WordLists component */}
           {/* <WordLists words={filteredData} search={search} /> */}
