@@ -13,12 +13,18 @@ interface RequestBody {
   word_Name: string;
   word_Group: string;
   wordDescriptions: WordDescription[];
+  Admin_ID: number;
 }
 
 export async function PUT(request: NextRequest) {
   try {
-    const { Word_ID, word_Name, word_Group, wordDescriptions }: RequestBody =
-      await request.json();
+    const {
+      Word_ID,
+      word_Name,
+      word_Group,
+      wordDescriptions,
+      Admin_ID,
+    }: RequestBody = await request.json();
     console.log("Received data:", {
       Word_ID,
       word_Name,
@@ -112,6 +118,14 @@ export async function PUT(request: NextRequest) {
         }
       }
     }
+
+    // Log the update in wordupdate table
+    await mysqlPool
+      .promise()
+      .query(
+        "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ແກ້ໄຂຄຳສັບ', ?, 1)",
+        [Word_ID, Admin_ID]
+      );
 
     return NextResponse.json(
       { message: "Word updated successfully" },
