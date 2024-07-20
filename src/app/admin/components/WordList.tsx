@@ -27,8 +27,10 @@ const Page: React.FC<{ search: string }> = ({ search }) => {
   }, []);
 
   // Filter words based on search criteria
-  const filteredWords: Word[] = data.filter((word) =>
-    word.Word_Name.toLowerCase().includes(search.toLowerCase())
+  const filteredWords: Word[] = data.filter(
+    (word) =>
+      word.Word_Name.toLowerCase().includes(search.toLowerCase()) ||
+      word.Word_ID.toString().includes(search)
   );
 
   return (
@@ -42,7 +44,7 @@ const Page: React.FC<{ search: string }> = ({ search }) => {
             <li key={word.Word_ID} className="hover:text-primaryBg text-center">
               <Link href={`/admin/wordsDetails/${word.Word_ID}`}>
                 <div className="border-2 border-black w-auto">
-                  {word.Word_Name}
+                  {word.Word_ID} : {word.Word_Name}
                 </div>
               </Link>
             </li>
