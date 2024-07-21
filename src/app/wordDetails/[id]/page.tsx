@@ -94,8 +94,6 @@ const Page: React.FC<PageProps> = ({ params }) => {
   return (
     <>
       {/* ຫນ້າຈໍຄອມ */}
-
-      {/* ຫນ້າຈໍຄອມ */}
       <div className="hidden md:flex flex-col w-9/12 mx-3">
         <p className="text-center">ລາຍລະອຽດຄຳສັບ</p>
         <div className="container mx-auto bg-primaryAccent rounded-lg h-full">

@@ -190,7 +190,7 @@ export default function Page() {
             <div className="flex justify-end">
               <Link
                 href="/admin/historyEvent"
-                className="p-2 rounded-lg bg-pink-500 text-white hover:bg-pink-700"
+                className="p-2 rounded-lg bg-yellow-500 text-white hover:bg-yellow-700"
               >
                 <span className="flex">
                   <MdManageHistory className="text-2xl" />
