@@ -2,6 +2,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { getData } from "./data";
+import BackToTopButton from "../components/backtotopBtn";
 
 interface Items {
   Update_Date: string;
@@ -43,13 +44,13 @@ export default function Page() {
           <thead className="bg-gray-100 border-b border-gray-200">
             <tr>
               <th className="p-3 text-left text-sm font-semibold text-gray-600">
-                Update Date
+                ເວລາການອັບເດດ
               </th>
               <th className="p-3 text-left text-sm font-semibold text-gray-600">
-                Update Detail
+                ລາຍລະອຽດການອັບເດດ
               </th>
               <th className="p-3 text-left text-sm font-semibold text-gray-600">
-                Word_ID
+                ໄອດີ-ຄຳສັບ
               </th>
             </tr>
           </thead>
@@ -68,6 +69,7 @@ export default function Page() {
           </tbody>
         </table>
       </div>
+      <BackToTopButton />
     </div>
   );
 }
