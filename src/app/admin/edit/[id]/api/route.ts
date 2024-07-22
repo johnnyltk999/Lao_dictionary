@@ -92,7 +92,7 @@ export async function PUT(request: NextRequest) {
           await mysqlPool
             .promise()
             .query(
-              "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ເພີ່ມຮູບພາບ', ?, 1)",
+              "INSERT INTO wordupdate (update_date, update_detail, word_id, admin_id) VALUES (NOW(), 'ເພີ່ມຮູບພາບຄຳອະທິບາຍ', ?, 1)",
               [Word_ID, Admin_ID]
             );
         } else {

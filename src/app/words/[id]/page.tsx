@@ -155,7 +155,7 @@ const Page: React.FC = () => {
             {currentWords.map((item) => (
               <li
                 key={item.id}
-                className="py-2 bg-white rounded-lg hover:bg-white/70 "
+                className="py-2 bg-white rounded-lg hover:bg-white/70 truncate"
               >
                 <a href={`/wordDetails/${item.Word_ID}`}>
                   <div className="text-base text-black text-center block">
@@ -200,14 +200,14 @@ const Page: React.FC = () => {
           <span className="text-primaryBg font-bold ">[ {id} ]</span>
         </p>
         <div className="container bg-primaryAccent rounded-lg h-[66.8vh]">
-          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2">
+          <ul className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2 ">
             {currentWords.map((item) => (
               <li
                 key={item.id}
-                className="py-2 bg-white rounded-lg hover:bg-white/50 duration-300"
+                className="py-2 bg-white rounded-lg hover:bg-white/50 duration-300 truncate"
               >
                 <a href={`/wordDetails/${item.Word_ID}`}>
-                  <div className="text-base text-black text-center block">
+                  <div className="text-base text-black text-center block ">
                     {item.Word_Name}
                   </div>
                 </a>
