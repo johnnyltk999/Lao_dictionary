@@ -21,18 +21,18 @@ export default function Home() {
   const [data, setData] = useState<Word[]>([]);
   const [search, setSearch] = useState<string>("");
 
-  const fetchData = async () => {
-    try {
-      const result: Word[] = await getData();
-      setData(result);
-    } catch (error) {
-      console.error("Error fetching data:", error);
-    }
-  };
-
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const result: Word[] = await getData();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
     fetchData();
-  }, [data]);
+  }, []);
 
   const filteredData: Word[] =
     data.filter((word) => {

@@ -25,12 +25,14 @@ export async function PUT(request: NextRequest) {
       wordDescriptions,
       Admin_ID,
     }: RequestBody = await request.json();
-    console.log("Received data:", {
-      Word_ID,
-      word_Name,
-      word_Group,
-      wordDescriptions,
-    });
+
+    // console.log("Received data:", {
+    //   Word_ID,
+    //   word_Name,
+    //   word_Group,
+    //   wordDescriptions,
+    // });
+
     if (
       !Word_ID ||
       !word_Name ||

@@ -27,10 +27,10 @@ const Page: React.FC<PageProps> = ({ params }) => {
   useEffect(() => {
     async function fetchData() {
       try {
-        console.log("ກຳລັງໂຫລດຂໍ້ມູນ...");
+        // console.log("ກຳລັງໂຫລດຂໍ້ມູນ...");
         const result = await getData(id);
         setData(result);
-        console.log("ຂໍ້ມູນທີ່ໄດ້ຮັບ", result);
+        // console.log("ຂໍ້ມູນທີ່ໄດ້ຮັບ", result);
       } catch (error) {
         setError(error as Error);
       } finally {
