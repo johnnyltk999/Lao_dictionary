@@ -4,7 +4,6 @@ import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { getData } from "../api/data";
 interface Word {
-  id: number;
   Word_ID: number;
   Word_Name: string;
 }
@@ -152,7 +151,7 @@ const WordsLists: React.FC<WordsListProps> = ({ search }) => {
             <ul className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2">
               {currentWords.map((word) => (
                 <li
-                  key={word.id}
+                  key={word.Word_ID}
                   className="py-2 bg-white rounded-lg hover:bg-white/70 truncate"
                 >
                   <Link href={`/wordDetails/${word.Word_ID}`}>
@@ -204,7 +203,7 @@ const WordsLists: React.FC<WordsListProps> = ({ search }) => {
             <ul className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 p-2">
               {currentWords.map((word) => (
                 <li
-                  key={word.id}
+                  key={word.Word_ID}
                   className="py-2 bg-white rounded-lg hover:bg-white/50 duration-300 truncate"
                 >
                   <Link href={`/wordDetails/${word.Word_ID}`}>
