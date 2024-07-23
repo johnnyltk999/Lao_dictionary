@@ -9,7 +9,6 @@ export async function GET(req: NextRequest) {
       //  LEFT JOIN worddescribe AS wd ON (w.Word_ID = wd.Word_ID)
       //  JOIN word_type AS wt ON (wd.WordType_ID = wt.WordType_ID) order by w.Word_group, word_Name`
       `SELECT * FROM  word `
-      // `SELECT * FROM  word ORDER BY  Word_Group, word_Name`
     );
 
     const response = NextResponse.json(rows);
