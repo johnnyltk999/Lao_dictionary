@@ -41,55 +41,10 @@ const Page: React.FC<PageProps> = ({ params }) => {
     fetchData();
   }, [id]);
 
-  const renderImage = (
-    image: string | { data: Uint8Array } | undefined,
-    wordName: string
-  ) => {
-    if (!image) return null;
-
-    if (typeof image === "string") {
-      let imageSrc = image;
-
-      if (
-        !image.startsWith("/") &&
-        !image.startsWith("http://") &&
-        !image.startsWith("https://")
-      ) {
-        // Use the API route for images not in the public directory
-        imageSrc = `/${image}`;
-      }
-
-      return (
-        <Image
-          src={imageSrc}
-          alt={wordName}
-          width={200}
-          height={200}
-          className="rounded-lg object-cover"
-        />
-      );
-    } else if (image.data instanceof Uint8Array) {
-      // If image is binary data
-      return (
-        <Image
-          src={`data:image/jpeg;base64,${Buffer.from(image.data).toString(
-            "base64"
-          )}`}
-          alt={wordName}
-          width={200}
-          height={200}
-          className="rounded-lg object-cover"
-        />
-      );
-    }
-
-    return null;
-  };
-  if (loading) return <p>ກຳລັງໂຫລດຂໍ້ມູນ...</p>;
+  if (loading) {
+    return <p>ກຳລັງໂຫລດຂໍ້ມູນ...</p>;
+  }
   if (error) return <p>Error: {error.message}</p>;
-  if (!data || data.length === 0) return <p>ບໍ່ພົບຂໍ້ມູນ</p>;
-  // if (loading) return <p>ກຳລັງໂຫລດຂໍ້ມູນ...</p>;
-  // if (error) return <p>Error: {error.message}</p>;
 
   return (
     <>
@@ -97,50 +52,49 @@ const Page: React.FC<PageProps> = ({ params }) => {
       <div className="hidden md:flex flex-col w-9/12 mx-3">
         <p className="text-center">ລາຍລະອຽດຄຳສັບ</p>
         <div className="container mx-auto bg-primaryAccent rounded-lg h-full">
-          <div className="p-5 bg-white m-3 rounded-lg h-[70vh] overflow-y-auto">
-            {data.map((item, index) => (
-              <div key={index}>
-                {index === 0 && (
-                  <div className="p-5">
-                    <h1 className="text-5xl">{item.Word_Name}</h1>
-                  </div>
-                )}
+          {data && data.length > 0 && (
+            <div className="p-5 bg-white m-3 rounded-lg h-[70vh] overflow-y-auto">
+              {data.map((item, index) => (
+                <div key={index}>
+                  {index === 0 && (
+                    <div className="p-5">
+                      <h1 className="text-5xl">{item.Word_Name}</h1>
+                    </div>
+                  )}
 
-                <hr className="border" />
-                <div className="pl-5">
-                  <p className="font-bold text-primaryBg">
-                    {item.WordType_Group}
-                  </p>
-                </div>
-
-                <div className="flex flex-col">
-                  <div className="pl-20 pt-2 grid grid-cols-2 mb-2">
-                    <p className="flex items-center">
-                      {item.WordDescribe_Detail || "ບໍ່ມີຂໍ້ມູນ"}
+                  <hr className="border" />
+                  <div className="pl-5">
+                    <p className="font-bold text-primaryBg">
+                      {item.WordType_Group}
                     </p>
-                    {item.Image && (
-                      <div className="mt-3">
-                        {item.Image && item.Image.data && (
-                          <Image
-                            src={`data:image/jpeg;base64,${Buffer.from(
-                              item.Image.data
-                            ).toString("base64")}`}
-                            alt={item.Word_Name || "Word image"}
-                            className="rounded-lg object-cover"
-                            width={200}
-                            height={200}
-                          />
-                        )}
-                      </div>
-                    )}
-                    <div className="flex justify-center">
-                      {renderImage(item.Image, item.Word_Name)}
+                  </div>
+
+                  <div className="flex flex-col">
+                    <div className="pl-20 pt-2 grid grid-cols-2 mb-2">
+                      <p className="flex items-center">
+                        {item.WordDescribe_Detail || "ບໍ່ມີຂໍ້ມູນ"}
+                      </p>
+                      {item.Image && (
+                        <div className="mt-3">
+                          {item.Image && item.Image.data && (
+                            <Image
+                              src={`data:image/jpeg;base64,${Buffer.from(
+                                item.Image.data
+                              ).toString("base64")}`}
+                              alt={item.Word_Name || "Word image"}
+                              className="rounded-lg object-cover"
+                              width={200}
+                              height={200}
+                            />
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       </div>
 
