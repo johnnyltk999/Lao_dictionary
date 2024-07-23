@@ -12,7 +12,7 @@ export async function GET(req: NextRequest) {
     );
 
     const response = NextResponse.json(rows);
-    // response.headers.set("Cache-Control", "no-store");
+    response.headers.set("Cache-Control", "no-store");
     return response;
   } catch (error) {
     console.error(error);
