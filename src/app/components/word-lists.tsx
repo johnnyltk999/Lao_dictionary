@@ -2,32 +2,47 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
-
+import { getData } from "../api/data";
 interface Word {
   id: number;
   Word_ID: number;
   Word_Name: string;
 }
 
-interface WordsListProps {
-  words: Word[];
-  search: string;
-}
+// interface WordsListProps {
+//   words: Word[];
+//   search: string;
+// }
 
-const WordsLists: React.FC<WordsListProps> = ({ words, search }) => {
+const WordsLists: React.FC<{ search: string }> = ({ search }) => {
+  const [data, setData] = useState<Word[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage: number = 60;
   const maxPageNumbersToShow: number = 4;
 
-  const filteredWords: Word[] = words.filter((word) =>
+  const filteredWords: Word[] = data.filter((word) =>
     word.Word_Name.toLowerCase().includes(search.toLowerCase())
   );
 
   const totalPages: number = Math.ceil(filteredWords.length / itemsPerPage);
 
+  // useEffect(() => {
+  //   setCurrentPage(1);
+  // }, [search]);
+
   useEffect(() => {
-    setCurrentPage(1);
-  }, [search]);
+    const fetchData = async () => {
+      try {
+        const result = await getData();
+        setData(result);
+        setCurrentPage(1); // Set total words count
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleNextPage = () => {
     setCurrentPage((prev) => Math.min(prev + 1, totalPages));
