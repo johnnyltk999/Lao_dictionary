@@ -57,7 +57,7 @@ export default function Home() {
           <RightNav />
         </div>
         <div>
-          <WordsLists search={search} />
+          <WordsLists search={search} words={filteredData} />
         </div>
       </div>
 
@@ -68,7 +68,7 @@ export default function Home() {
             <LeftNav />
           </div>
 
-          <WordsLists search={search} />
+          <WordsLists search={search} words={filteredData} />
 
           <div>
             <RightNav />

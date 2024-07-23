@@ -9,12 +9,12 @@ interface Word {
   Word_Name: string;
 }
 
-// interface WordsListProps {
-//   words: Word[];
-//   search: string;
-// }
+interface WordsListProps {
+  words: Word[];
+  search: string;
+}
 
-const WordsLists: React.FC<{ search: string }> = ({ search }) => {
+const WordsLists: React.FC<WordsListProps> = ({ search }) => {
   const [data, setData] = useState<Word[]>([]);
   const [currentPage, setCurrentPage] = useState<number>(1);
   const itemsPerPage: number = 60;
