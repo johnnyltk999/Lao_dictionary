@@ -56,7 +56,7 @@ const Page: React.FC = () => {
           >
             ລັອກອິນ
           </button>
-          <a href="/">
+          <a href="/admin">
             <button
               type="button"
               className="bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"

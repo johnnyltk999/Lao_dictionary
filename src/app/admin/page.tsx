@@ -104,25 +104,28 @@ export default function Page() {
       ) : (
         <>
           <nav className="bg-primaryBg p-2 mb-2 items-center">
-            <div className="flex items-center space-x-4 justify-end">
-              <p className="text-white">ກາລຸນາເຂົ້າສູ່ລະບົບ</p>
-              <button
-                onClick={() => signIn()}
-                className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500"
-              >
-                ລັອກອິນ
-              </button>
+            <div className="container mx-auto flex justify-between items-center">
+              <div className="text-white text-xl">ລາວລາວ | ຜູ້ດູແລ</div>
+              <div className="flex items-center space-x-4 justify-end">
+                <p className="text-white">ກາລຸນາເຂົ້າສູ່ລະບົບ</p>
+                <button
+                  onClick={() => signIn()}
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-500"
+                >
+                  ລັອກອິນ
+                </button>
+              </div>
             </div>
           </nav>
-          <div className="flex  justify-center mt-72">
+          {/* <div className="flex  justify-center mt-72">
             <h1 className="text-3xl">ກາລຸນາເຂົ້າສູ່ລະບົບ !🫡</h1>
-          </div>
-          <a
+          </div> */}
+          {/* <a
             href="/"
             className="text-orange-300 justify-center flex mt-5 underline"
           >
             ກັບໄປຫນ້າທຳອິດ
-          </a>
+          </a> */}
         </>
       )}
     </>

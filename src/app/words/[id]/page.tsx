@@ -36,7 +36,7 @@ const Page: React.FC = () => {
       try {
         const result = await getData(`${id}`);
         setData(result);
-        console.log("ຂໍ້ມູນທີ່ໄດ້ຮັບ:", result);
+        // console.log("ຂໍ້ມູນທີ່ໄດ້ຮັບ:", result);
       } catch (error) {
         console.error("Error fetching data:", error);
       } finally {
