@@ -85,6 +85,7 @@ const Page: React.FC<PageProps> = ({ params }) => {
                               className="rounded-lg object-cover"
                               width={200}
                               height={200}
+                              loading="lazy"
                             />
                           )}
                         </div>

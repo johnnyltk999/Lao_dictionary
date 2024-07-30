@@ -44,6 +44,7 @@ const Page: React.FC<{ search: string }> = ({ search }) => {
             <li key={word.Word_ID} className="hover:text-primaryBg text-center">
               <Link href={`/admin/wordsDetails/${word.Word_ID}`}>
                 <div className="border-2 border-black w-auto">
+                  <span className="text-primaryBg">{word.Word_ID} :</span>{" "}
                   {word.Word_Name}
                 </div>
               </Link>

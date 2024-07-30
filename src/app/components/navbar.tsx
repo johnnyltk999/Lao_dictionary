@@ -20,7 +20,13 @@ const Navbar = () => {
         <div className="px-10 flex justify-between items-center text-white">
           <div>
             <a href="/">
-              <Image src={Logo} alt="Logo" width={100} height={100}></Image>
+              <Image
+                loading="lazy"
+                src={Logo}
+                alt="Logo"
+                width={100}
+                height={100}
+              ></Image>
             </a>
           </div>
           <div className="">

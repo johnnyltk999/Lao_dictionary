@@ -1,10 +1,10 @@
 "use client";
 
-import NavBar from "../components/navbar";
-import LeftNav from "../components/left-nav";
-import RightNav from "../components/right-nav";
+import NavBar from "../../components/navbar";
+import LeftNav from "../../components/left-nav";
+import RightNav from "../../components/right-nav";
 
-import Footter from "../components/footter";
+import Footter from "../../components/footter";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 export default function RootLayout({
